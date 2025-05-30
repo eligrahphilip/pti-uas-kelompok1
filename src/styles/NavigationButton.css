@@ -1,0 +1,87 @@
+.navigation-buttons {
+  position: absolute;
+  right: 80em; /* Jaga jarak dari sisi kanan */
+  bottom: 5rem; /* Tempatkan di bagian bawah kanan */
+  display: flex;
+  flex-direction: column; /* Tumpuk secara vertikal */
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.nav-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+  width: 100px; /* Lebar tetap untuk konsistensi */
+  justify-content: center;
+}
+
+.nav-button:hover {
+  background: rgba(0, 0, 0, 1);
+  transform: scale(1.05);
+}
+
+.nav-button:active {
+  transform: scale(0.95);
+}
+
+.return-button {
+  background: rgba(33, 150, 243, 0.3);
+  border-color: #2196F3;
+}
+
+.exit-button {
+  background: rgba(244, 67, 54, 0.3);
+  border-color: #f44336;
+}
+
+.arrow-navigation {
+  position: absolute;
+  right: 1rem; /* Tempatkan di sisi kanan */
+  bottom: 1rem; /* Jarak dari tombol aksi, sesuaikan berdasarkan tinggi tombol aksi */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.interior-arrows {
+  bottom: 1rem; /* Sesuaikan jika di interior view untuk memberikan ruang lebih */
+  right: -13rem;
+}
+
+.arrow-row {
+  display: flex;
+  justify-content: center;
+  margin: 0.25rem 0;
+}
+
+.arrow-button {
+  width: 3rem; /* Ukuran lebih besar untuk visibilitas */
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 1.5rem; /* Ukuran teks lebih besar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.arrow-button:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.arrow-button:active {
+  background: rgba(0, 0, 0, 1);
+}

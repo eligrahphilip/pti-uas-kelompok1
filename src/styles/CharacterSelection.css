@@ -1,0 +1,227 @@
+.character-selection-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  background-image: url('public/assets/cover/cover2.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.floating-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.floating-particles div {
+  position: absolute;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.2;
+  animation: float 10s linear infinite;
+}
+
+.character-selection-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 4xl;
+  padding: 0 1rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 1.5rem;
+  animation: bounce 1s infinite;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.character-display {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.nav-button {
+  position: absolute;
+  padding: 0.75rem;
+  background: linear-gradient(to right, #4b5563, #6b7280);
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.nav-button:hover {
+  transform: scale(1.1);
+}
+
+.prev-button {
+  left: 0;
+}
+
+.next-button {
+  right: 0;
+}
+
+.character-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s;
+}
+
+.character-info.animating {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.character-image-container {
+  position: relative;
+}
+
+.character-image {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 9999px;
+  border-width: 4px;
+  border-color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.character-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.character-name {
+  position: absolute;
+  bottom: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border-width: 2px;
+  border-color: #f59e0b;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.character-stats {
+  margin-top: 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(0.5rem);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border-width: 1px;
+  border-color: #374151;
+  width: 100%;
+  max-width: 48rem;
+}
+
+.description {
+  color: white;
+  text-align: center;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #f59e0b;
+}
+
+.stat-label {
+  color: #d1d5db;
+  font-size: 0.75rem;
+}
+
+.player-name-input {
+  width: 100%;
+  max-width: 48rem;
+  margin-top: 1.5rem;
+}
+
+.name-input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-width: 2px;
+  border-color: #374151;
+  border-radius: 0.5rem;
+  transition: border-color 0.2s;
+}
+
+.name-input:focus {
+  border-color: #f59e0b;
+}
+
+.name-input::placeholder {
+  color: #9ca3af;
+}
+
+.start-button {
+  margin-top: 1.5rem;
+  padding: 0; /* Removed padding to eliminate orange spacing */
+  background: transparent; /* Removed orange gradient */
+  color: white;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s;
+  border: none; /* Removed any potential border */
+}
+
+.start-button:hover:not(:disabled) {
+  transform: scale(1.05); /* Kept hover effect without orange */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.start-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(10px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-0.5rem); }
+}

@@ -1,0 +1,417 @@
+.game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #222;
+}
+
+.interior-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 90vh;
+  border: 50px solid black;
+  border-radius: 50px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+.map-view {
+  height: 100%;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  width: 80%;
+}
+
+.game-background {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.map-navigation-sidebar {
+  width: 20%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  border-left: 1px solid #444;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-header h3 {
+  color: white;
+  margin: 0 0 0.5rem 0;
+}
+
+.sidebar-header p {
+  color: #aaa;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.sidebar-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.control-group {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.control-group h4 {
+  color: #4CAF50;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.arrow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.5rem;
+  justify-items: center;
+}
+
+.arrow-button {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.arrow-button:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.arrow-button:active {
+  background: rgba(0, 0, 0, 1);
+}
+
+.arrow-button.up {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.arrow-button.left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.arrow-button.down {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.arrow-button.right {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.action-button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.action-button:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.action-button:active {
+  transform: scale(0.95);
+}
+
+.return-button {
+  background: rgba(33, 150, 243, 0.3);
+  border-color: #2196F3;
+}
+
+.exit-button {
+  background: rgba(244, 67, 54, 0.3);
+  border-color: #f44336;
+}
+
+.player-info {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  z-index: 10;
+}
+
+.player-character {
+  position: absolute;
+  transition: left 0.1s linear, top 0.1s linear;
+  z-index: 20;
+}
+
+.player-character.moving img {
+  animation: bounce 0.5s infinite alternate;
+}
+
+.player-character img {
+  width: 6rem;
+  height: 6rem;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5));
+}
+
+.map-marker {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid white;
+  z-index: 5;
+  transition: all 0.2s;
+}
+
+.map-marker.visited {
+  background: rgba(0, 255, 0, 0.3);
+  border-color: green;
+}
+
+.map-marker:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.visited-dot {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: green;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.map-notification {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  transform: translate(-50%, -120%);
+  z-index: 50;
+  text-align: center;
+  min-width: 200px;
+}
+
+.notification-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.notification-buttons button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  color: white;
+  border: none;
+}
+
+.notification-buttons button:first-child {
+  background: #4CAF50;
+}
+
+.notification-buttons button:last-child {
+  background: #2196F3;
+}
+
+.main-notification {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.25rem;
+  z-index: 1000;
+  animation: fadeInOut 3s forwards;
+}
+
+.game-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  z-index: 100;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border: 2px solid #444;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #444;
+}
+
+.menu-header h3 {
+  color: white;
+  margin: 0;
+}
+
+.close-menu {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+.close-menu:hover {
+  color: #f44336;
+}
+
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.menu-section {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.menu-section h4 {
+  color: #2196F3;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.quick-travel-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+.travel-option, .menu-option {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #444;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.travel-option:hover, .menu-option:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #2196F3;
+}
+
+.travel-option:active, .menu-option:active {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.map-header {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+.exit-symbol {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.exit-symbol:hover {
+  transform: rotate(90deg);
+}
+
+.exit-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  top: 50%;
+  left: 0;
+}
+
+.exit-line-1 {
+  transform: rotate(45deg);
+}
+
+.exit-line-2 {
+  transform: rotate(-45deg);
+}
+
+.map-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; bottom: 0; }
+  10% { opacity: 1; bottom: 1.25rem; }
+  90% { opacity: 1; bottom: 1.25rem; }
+  100% { opacity: 0; bottom: 2.5rem; }
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}

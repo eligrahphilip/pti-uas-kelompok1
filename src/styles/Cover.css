@@ -1,0 +1,34 @@
+.cover-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/assets/cover/cover1.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  font-family: Arial;
+}
+
+.start-button {
+  margin-top: -50px;
+  width: 80px; /* Reduce width to exclude orange */
+  height: 80px; /* Adjust height as needed */
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  object-fit: cover; /* Ensures the image fits without stretching */
+}
+
+.start-button:hover {
+  transform: scale(0.9);
+}
+
+.start-button:active {
+  transform: scale(1);
+}
